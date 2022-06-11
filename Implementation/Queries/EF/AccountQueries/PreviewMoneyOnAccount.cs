@@ -28,6 +28,10 @@ namespace Implementation.Queries.EF.AccountQueries
         {
                 var query = this.context.MoneyOnAccounts.AsQueryable();
 
+                if (search.IdAccount != 0) 
+                {
+                    query = query.Where(x => x.AccountId == search.IdAccount);
+                }
                 if (search.IdCurrency != 0)
                 {
                     query = query.Where(x => x.CurrencyId == search.IdCurrency);
